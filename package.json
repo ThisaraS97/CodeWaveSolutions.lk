@@ -6,7 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preview:netlify": "npm run build && npx netlify-cli serve"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "dependencies": {
     "lucide-react": "^0.511.0",

@@ -1,83 +1,90 @@
 # Codewave Solutions Website
 
-Professional marketing website for **Codewave Solutions** — custom Odoo ERP and Learning Management System (LMS) services in Sri Lanka.
+Professional marketing website for **Codewave Solutions** — Nexus Retail POS, E- ඉස්කෝලේ LMS, and custom Odoo ERP in Sri Lanka.
+
+**Live repo:** [github.com/ThisaraS97/CodeWaveSolutions.lk](https://github.com/ThisaraS97/CodeWaveSolutions.lk)
 
 ## Tech Stack
 
-- **React 19** + **Vite 6** — fast development and optimized production builds
+- **React 19** + **Vite 6**
 - **React Router** — client-side routing
-- **Tailwind CSS 4** — responsive, modern styling
-- **Lucide React** — icons
+- **Tailwind CSS 4**
+- **Netlify** — hosting, SPA redirects, forms, headers
+
+## Local Development
+
+```bash
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # output → dist/
+npm run preview    # preview production build
+```
+
+## Deploy to Netlify
+
+The project is pre-configured for [Netlify](https://www.netlify.com/) via `netlify.toml`.
+
+### Option A — Connect GitHub (recommended)
+
+1. Sign in at [app.netlify.com](https://app.netlify.com)
+2. **Add new site** → **Import an existing project** → **GitHub**
+3. Select **ThisaraS97/CodeWaveSolutions.lk**
+4. Netlify auto-detects settings from `netlify.toml`:
+   - **Build command:** `npm run build`
+   - **Publish directory:** `dist`
+   - **Node version:** 20
+5. Click **Deploy site**
+6. After deploy, add your custom domain (`codewavesolutions.lk`) under **Domain management**
+
+### Option B — Netlify CLI
+
+```bash
+npm install -g netlify-cli
+netlify login
+netlify init
+netlify deploy --prod
+```
+
+### Custom domain (codewavesolutions.lk)
+
+1. Netlify → **Domain management** → **Add domain**
+2. At your domain registrar, set DNS:
+   - **A record** → Netlify load balancer IP `75.2.60.5`
+   - **CNAME** `www` → `your-site-name.netlify.app`
+3. Enable **HTTPS** (free SSL) in Netlify — automatic once DNS propagates
+
+## Netlify Features Included
+
+| Feature | File | Purpose |
+|---------|------|---------|
+| Build config | `netlify.toml` | Build command, publish dir, Node 20 |
+| SPA routing | `netlify.toml` + `public/_redirects` | `/services`, `/contact`, etc. work on refresh |
+| Contact form | `index.html` + `Contact.jsx` | [Netlify Forms](https://docs.netlify.com/forms/setup/) — submissions in Netlify dashboard |
+| Security headers | `netlify.toml` | XSS/frame protection |
+| Asset caching | `netlify.toml` | Fast repeat visits |
+
+### View form submissions
+
+Netlify → your site → **Forms** → `contact`
+
+Set up email notifications: **Site configuration** → **Forms** → **Form notifications**.
 
 ## Pages
 
 | Route | Description |
 |-------|-------------|
-| `/` | Home — hero, services, testimonials, FAQ, CTA |
-| `/services` | All services overview |
-| `/odoo-erp` | Odoo ERP for retail & organizations |
-| `/lms` | Learning Management System |
-| `/about` | Company story and values |
-| `/contact` | Contact form and details |
-
-## Getting Started
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-```
-
-## Deploy to Cheap Hosting
-
-This is a **static site** after building. Upload the `dist/` folder to any static host:
-
-### Netlify / Vercel (Free tier)
-1. Push to GitHub
-2. Connect repo to Netlify or Vercel
-3. Build command: `npm run build`
-4. Publish directory: `dist`
-
-### Shared cPanel / Apache Hosting
-1. Run `npm run build`
-2. Upload contents of `dist/` to `public_html`
-3. The included `.htaccess` handles React Router URLs
-
-### GitHub Pages
-Add to `vite.config.js`:
-```js
-base: '/your-repo-name/'
-```
+| `/` | Home |
+| `/services` | Services overview |
+| `/odoo-erp` | Nexus Retail POS & Odoo ERP |
+| `/lms` | E- ඉස්කෝලේ LMS |
+| `/about` | About |
+| `/contact` | Contact form |
 
 ## Customize Content
 
-Edit **`src/data/content.js`** to update:
-- Company name, phone, email, address
-- Services, testimonials, FAQs
-- Stats and process steps
+Edit **`src/data/content.js`** for company info, products, testimonials, and FAQs.
 
-## Replace Dummy Images
-
-All images currently use Unsplash placeholders. Replace URLs in:
-- `src/data/content.js`
-- Individual page/component files
-
-Or add your images to `public/images/` and update paths to `/images/your-file.jpg`.
-
-## Contact Form
-
-The form validates on the client and shows a success message. To receive submissions, connect to:
-- [Formspree](https://formspree.io)
-- [EmailJS](https://www.emailjs.com)
-- Your own backend API
+Replace images in **`public/images/`** or update URLs in `content.js`.
 
 ## License
 

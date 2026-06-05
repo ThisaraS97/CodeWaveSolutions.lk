@@ -26,6 +26,16 @@
     <title>Codewave Solutions | Nexus Retail POS & E- ඉස්කෝලේ LMS</title>
   </head>
   <body>
+    <!-- Netlify Forms: static markup for build-time detection (React SPA) -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="company" />
+      <input type="text" name="service" />
+      <textarea name="message"></textarea>
+    </form>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
