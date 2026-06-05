@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
+  <defs>
+    <linearGradient id="cw-bg" x1="40" y1="20" x2="200" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1220"/>
+      <stop offset="1" stop-color="#0E3A5D"/>
+    </linearGradient>
+    <linearGradient id="cw-wave" x1="48" y1="88" x2="192" y2="168" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22D3EE"/>
+      <stop offset="0.5" stop-color="#06B6D4"/>
+      <stop offset="1" stop-color="#0284C7"/>
+    </linearGradient>
+    <linearGradient id="cw-accent" x1="72" y1="56" x2="168" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#67E8F9"/>
+      <stop offset="1" stop-color="#0891B2"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="240" rx="56" fill="url(#cw-bg)"/>
+  <path d="M52 128c24-18 48-18 68 0s44 18 68 0" stroke="url(#cw-wave)" stroke-width="10" stroke-linecap="round" opacity="0.35"/>
+  <path d="M52 108c24-18 48-18 68 0s44 18 68 0" stroke="url(#cw-wave)" stroke-width="10" stroke-linecap="round"/>
+  <path d="M52 148c24-18 48-18 68 0s44 18 68 0" stroke="url(#cw-wave)" stroke-width="10" stroke-linecap="round" opacity="0.55"/>
+  <path d="M88 72h64" stroke="url(#cw-accent)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M76 72V96" stroke="url(#cw-accent)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M164 72V96" stroke="url(#cw-accent)" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="120" cy="72" r="6" fill="#E0F2FE"/>
+</svg>

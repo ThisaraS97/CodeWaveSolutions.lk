@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-brand-50: #ecfeff;
+  --color-brand-100: #cffafe;
+  --color-brand-200: #a5f3fc;
+  --color-brand-300: #67e8f9;
+  --color-brand-400: #22d3ee;
+  --color-brand-500: #06b6d4;
+  --color-brand-600: #0891b2;
+  --color-brand-700: #0e7490;
+  --color-brand-800: #155e75;
+  --color-brand-900: #164e63;
+  --color-navy-900: #0f172a;
+  --color-navy-800: #1e293b;
+  --color-navy-700: #334155;
+  /* Nexus Retail POS — logo lavender → royal blue */
+  --color-nexus-lavender: #c4b5fd;
+  --color-nexus-violet: #8b5cf6;
+  --color-nexus-purple: #7c3aed;
+  --color-nexus-indigo: #6366f1;
+  --color-nexus-blue: #2563eb;
+  --color-nexus-royal: #1d4ed8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white font-sans text-slate-700 antialiased;
+}
+
+::selection {
+  @apply bg-violet-200 text-slate-900;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out forwards;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-cyan-300 via-teal-400 to-sky-500 bg-clip-text text-transparent;
+}
+
+/* Nexus Retail — matches POS logo gradient */
+.nexus-gradient-text {
+  @apply bg-gradient-to-r from-[#C4B5FD] via-[#8B5CF6] to-[#2563EB] bg-clip-text text-transparent;
+}
+
+.nexus-gradient-bg {
+  @apply bg-gradient-to-r from-[#A78BFA] via-[#7C3AED] to-[#2563EB];
+}
+
+.nexus-gradient-bg-br {
+  @apply bg-gradient-to-br from-[#A78BFA] via-[#7C3AED] to-[#2563EB];
+}
+
+.nexus-border-gradient {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(white, white) padding-box,
+    linear-gradient(90deg, #c4b5fd, #8b5cf6, #2563eb) border-box;
+}
+
+.nexus-glow {
+  box-shadow:
+    0 4px 24px -4px rgba(139, 92, 246, 0.35),
+    0 8px 32px -8px rgba(37, 99, 235, 0.2);
+}
+
+.nexus-card-accent {
+  @apply border-violet-200/80 shadow-lg shadow-violet-500/10;
+}
+
+.hero-pattern {
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(34, 211, 238, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 25%, rgba(139, 92, 246, 0.14) 0%, transparent 45%),
+    radial-gradient(circle at 60% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 45%);
+}
+
+.hero-pattern-nexus {
+  background-image:
+    radial-gradient(circle at 30% 40%, rgba(167, 139, 250, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(37, 99, 235, 0.18) 0%, transparent 45%);
+}
+
+.glass-panel {
+  @apply bg-white/5 backdrop-blur-xl;
+}
+
+.glass-panel-nexus {
+  @apply border-violet-400/20 bg-gradient-to-br from-violet-500/10 via-transparent to-blue-600/10 backdrop-blur-xl;
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-500/10;
+}
+
+.card-hover-nexus {
+  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-500/15;
+}
+
+.section-padding {
+  @apply py-16 md:py-24;
+}
+
+.container-custom {
+  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+.product-logo-wrap {
+  @apply flex min-h-[88px] items-center justify-center rounded-2xl px-6 py-4;
+}
+
+.product-logo-wrap-nexus {
+  @apply flex min-h-[88px] items-center justify-center rounded-2xl border border-violet-200/60 bg-white px-6 py-4 shadow-inner shadow-violet-200/30;
+}

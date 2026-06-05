@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" fill="none">
+  <defs>
+    <linearGradient id="e-bg" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#059669"/>
+      <stop offset="1" stop-color="#0284C7"/>
+    </linearGradient>
+    <linearGradient id="e-text" x1="136" y1="24" x2="320" y2="88" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#047857"/>
+      <stop offset="0.5" stop-color="#0891B2"/>
+      <stop offset="1" stop-color="#0369A1"/>
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="28" fill="url(#e-bg)"/>
+  <path d="M36 88V32h28c16 0 26 10 26 24s-10 24-26 24H52" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="88" cy="36" r="6" fill="#A7F3D0"/>
+  <text x="136" y="58" fill="url(#e-text)" font-family="Inter,Segoe UI,sans-serif" font-size="38" font-weight="800">E-</text>
+  <text x="188" y="58" fill="url(#e-text)" font-family="Inter,Segoe UI,sans-serif" font-size="34" font-weight="700">&#3523;&#3530;&#3585;&#3548;&#3535;&#3530;&#3523;&#3546;</text>
+  <text x="136" y="92" fill="#64748B" font-family="Inter,Segoe UI,sans-serif" font-size="13" font-weight="600" letter-spacing="0.28">LEARNING MANAGEMENT SYSTEM</text>
+</svg>
