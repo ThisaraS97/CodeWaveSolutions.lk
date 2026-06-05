@@ -5,20 +5,20 @@ export default function IconBox({ icon, title, description, className = '', them
 
   const iconWrap =
     theme === 'nexus'
-      ? 'bg-violet-100 group-hover:nexus-gradient-bg'
-      : 'bg-brand-500/10 group-hover:bg-brand-500'
+      ? 'border border-violet-200 bg-violet-50 group-hover:nexus-gradient-bg'
+      : theme === 'emerald'
+        ? 'border border-emerald-200 bg-emerald-50 group-hover:bg-gradient-to-br group-hover:from-emerald-500 group-hover:to-teal-500'
+        : 'border border-slate-200 bg-slate-50 group-hover:bg-violet-50'
 
   const iconColor =
     theme === 'nexus'
       ? 'text-violet-600 group-hover:text-white'
-      : 'text-brand-600 group-hover:text-white'
+      : theme === 'emerald'
+        ? 'text-emerald-600 group-hover:text-white'
+        : 'text-slate-600 group-hover:text-violet-700'
 
   return (
-    <div
-      className={`group rounded-2xl border bg-white p-6 card-hover ${
-        theme === 'nexus' ? 'border-violet-100 card-hover-nexus' : 'border-slate-100'
-      } ${className}`}
-    >
+    <div className={`glass-card group p-6 card-hover ${className}`}>
       <div
         className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-300 group-hover:scale-110 ${iconWrap}`}
       >

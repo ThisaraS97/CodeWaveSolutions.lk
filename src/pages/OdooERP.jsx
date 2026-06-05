@@ -25,19 +25,17 @@ export default function OdooERP() {
             badge="Who We Serve"
             title="Nexus Retail for Every Business Size"
             subtitle="Whether you run a single shop or manage a nationwide retail network, Nexus scales with you."
+            badgeVariant="violet"
           />
 
           <div className="grid gap-8 md:grid-cols-3">
             {retailTypes.map((type) => (
-              <article
-                key={type.title}
-                className="group overflow-hidden rounded-3xl border border-violet-100/80 card-hover-nexus bg-white"
-              >
+              <article key={type.title} className="glass-card group overflow-hidden card-hover-nexus">
                 <div className="h-48 overflow-hidden">
                   <img
                     src={type.image}
                     alt={`${type.title} - placeholder`}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="h-full w-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-6">
@@ -50,23 +48,18 @@ export default function OdooERP() {
         </div>
       </section>
 
-      <section className="section-padding bg-gradient-to-b from-violet-50/80 to-blue-50/50">
+      <section className="section-padding">
         <div className="container-custom">
           <SectionHeading
             badge="Odoo + Nexus"
             title="Everything Your Business Needs in One Platform"
             subtitle="We configure Odoo modules around Nexus Retail — your daily POS experience, powered by enterprise ERP."
+            badgeVariant="violet"
           />
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {odooModules.map((mod) => (
-              <IconBox
-                key={mod.title}
-                theme="nexus"
-                icon={mod.icon}
-                title={mod.title}
-                description={mod.description}
-              />
+              <IconBox key={mod.title} theme="nexus" icon={mod.icon} title={mod.title} description={mod.description} />
             ))}
           </div>
         </div>
@@ -78,7 +71,7 @@ export default function OdooERP() {
             <div className="order-2 flex justify-center lg:order-1">
               <div className="product-logo-wrap-nexus nexus-glow w-full max-w-lg rounded-3xl p-10">
                 <img src={pos.logo} alt="Nexus Retail" className="mx-auto max-h-32 w-auto object-contain" />
-                <p className="mt-6 text-center text-xs font-semibold uppercase tracking-[0.28em] text-slate-400">
+                <p className="mt-6 text-center text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
                   {pos.tagline}
                 </p>
               </div>
@@ -88,6 +81,7 @@ export default function OdooERP() {
                 badge="Nexus Retail"
                 title="Fast Process UI for Retail"
                 center={false}
+                badgeVariant="violet"
                 subtitle="Not generic Odoo screens — Nexus Retail is a purpose-built interface so cashiers and managers work faster with fewer mistakes."
               />
               <ul className="mb-8 space-y-3">
@@ -98,7 +92,7 @@ export default function OdooERP() {
                   </li>
                 ))}
               </ul>
-              <Button to="/contact" size="md" className="nexus-gradient-bg text-white shadow-lg shadow-violet-500/30 hover:opacity-95">
+              <Button to="/contact" size="md">
                 Request Nexus Demo
                 <ArrowRight className="h-4 w-4" />
               </Button>
@@ -107,17 +101,17 @@ export default function OdooERP() {
         </div>
       </section>
 
-      <section className="section-padding nexus-gradient-bg-br text-white">
+      <section className="section-padding">
         <div className="container-custom">
-          <div className="grid gap-8 text-center md:grid-cols-3">
+          <div className="glass-strong nexus-glow grid gap-8 rounded-3xl p-10 text-center md:grid-cols-3 md:p-12">
             {[
               { value: '2–4 Weeks', label: 'Small Retail Go-Live' },
               { value: '6–12 Weeks', label: 'Enterprise Projects' },
               { value: '100%', label: 'Customizable Workflows' },
             ].map((item) => (
               <div key={item.label}>
-                <p className="mb-2 text-3xl font-extrabold md:text-4xl">{item.value}</p>
-                <p className="text-violet-100">{item.label}</p>
+                <p className="mb-2 text-3xl font-extrabold nexus-gradient-text md:text-4xl">{item.value}</p>
+                <p className="text-slate-600">{item.label}</p>
               </div>
             ))}
           </div>

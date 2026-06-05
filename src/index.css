@@ -2,38 +2,129 @@
 
 @theme {
   --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --color-brand-50: #ecfeff;
-  --color-brand-100: #cffafe;
-  --color-brand-200: #a5f3fc;
-  --color-brand-300: #67e8f9;
   --color-brand-400: #22d3ee;
   --color-brand-500: #06b6d4;
   --color-brand-600: #0891b2;
-  --color-brand-700: #0e7490;
-  --color-brand-800: #155e75;
-  --color-brand-900: #164e63;
-  --color-navy-900: #0f172a;
-  --color-navy-800: #1e293b;
-  --color-navy-700: #334155;
-  /* Nexus Retail POS — logo lavender → royal blue */
-  --color-nexus-lavender: #c4b5fd;
   --color-nexus-violet: #8b5cf6;
-  --color-nexus-purple: #7c3aed;
-  --color-nexus-indigo: #6366f1;
   --color-nexus-blue: #2563eb;
-  --color-nexus-royal: #1d4ed8;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 body {
-  @apply bg-white font-sans text-slate-700 antialiased;
+  @apply min-h-screen font-sans text-slate-600 antialiased;
+  background-color: #f8fafc;
 }
 
 ::selection {
-  @apply bg-violet-200 text-slate-900;
+  @apply bg-violet-200 text-violet-950;
+}
+
+.app-bg {
+  @apply fixed inset-0 -z-10 overflow-hidden bg-slate-50;
+}
+
+.app-bg::before {
+  content: "";
+  @apply absolute inset-0;
+  background:
+    radial-gradient(ellipse 80% 50% at 15% -5%, rgba(167, 139, 250, 0.14), transparent 55%),
+    radial-gradient(ellipse 60% 45% at 90% 5%, rgba(16, 185, 129, 0.08), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(37, 99, 235, 0.07), transparent 55%),
+    radial-gradient(ellipse 40% 30% at 5% 75%, rgba(6, 182, 212, 0.06), transparent 50%);
+}
+
+.app-bg::after {
+  content: "";
+  @apply absolute inset-0 opacity-[0.35];
+  background-image:
+    linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black, transparent 75%);
+}
+
+.app-bg-orb {
+  @apply pointer-events-none absolute rounded-full blur-3xl;
+  animation: orb-drift 20s ease-in-out infinite;
+}
+
+.app-bg-orb-1 {
+  @apply -left-32 top-0 h-[26rem] w-[26rem] bg-violet-300/20;
+}
+
+.app-bg-orb-2 {
+  @apply -right-24 top-1/4 h-96 w-96 bg-emerald-300/15;
+  animation-delay: -6s;
+}
+
+.app-bg-orb-3 {
+  @apply bottom-0 left-1/3 h-80 w-80 bg-blue-300/15;
+  animation-delay: -12s;
+}
+
+@keyframes orb-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(24px, -16px) scale(1.04);
+  }
+  66% {
+    transform: translate(-16px, 12px) scale(0.96);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transition:
+    opacity 0.8s var(--ease-out-expo),
+    transform 0.8s var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+
+.reveal-up {
+  transform: translateY(32px);
+}
+
+.reveal-left {
+  transform: translateX(-32px);
+}
+
+.reveal-right {
+  transform: translateX(32px);
+}
+
+.reveal-scale {
+  transform: scale(0.96);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translate(0) scale(1);
 }
 
 @keyframes fade-up {
@@ -48,10 +139,24 @@ body {
 }
 
 .animate-fade-up {
-  animation: fade-up 0.6s ease-out forwards;
+  animation: fade-up 0.6s var(--ease-out-expo) forwards;
 }
 
 @keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float-delayed {
   0%,
   100% {
     transform: translateY(0);
@@ -61,85 +166,257 @@ body {
   }
 }
 
-.animate-float {
-  animation: float 4s ease-in-out infinite;
+.animate-float-delayed {
+  animation: float-delayed 5s ease-in-out infinite;
+  animation-delay: -2.5s;
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.gradient-text-animated {
+  @apply bg-gradient-to-r from-slate-800 via-cyan-700 to-cyan-500 bg-clip-text text-transparent;
+  background-size: 200% auto;
+  animation: gradient-shift 6s ease infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-12deg);
+  }
+}
+
+.btn-shine {
+  @apply relative overflow-hidden;
+}
+
+.btn-shine::after {
+  content: "";
+  @apply pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300;
+  background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.35) 50%, transparent 60%);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.btn-shine:hover::after {
+  @apply opacity-100;
+}
+
+.glass-nav-scrolled {
+  @apply border-slate-200/90 bg-white/95 shadow-lg shadow-slate-200/50;
+}
+
+.hero-glow {
+  @apply pointer-events-none absolute rounded-full blur-3xl;
+}
+
+.glass {
+  @apply rounded-2xl border border-slate-200/80 bg-white/75 shadow-lg shadow-slate-200/60 backdrop-blur-xl;
+}
+
+.glass-strong {
+  @apply rounded-2xl border border-slate-200/90 bg-white/85 shadow-xl shadow-slate-200/70 backdrop-blur-xl;
+}
+
+.glass-card {
+  @apply rounded-3xl border border-slate-200/80 bg-white/70 shadow-lg shadow-slate-200/50 backdrop-blur-xl transition-all duration-500;
+  transition-timing-function: var(--ease-out-expo);
+}
+
+.glass-card:hover {
+  @apply border-slate-300/90 bg-white/90 shadow-xl;
+  transform: translateY(-4px);
+}
+
+.glass-nav {
+  @apply border-b border-slate-200/80 bg-white/80 backdrop-blur-xl backdrop-saturate-150 transition-all duration-300;
+}
+
+.glass-footer {
+  @apply border-t border-slate-200/80 bg-white/60 backdrop-blur-xl;
+}
+
+.glass-badge {
+  @apply inline-block rounded-full border border-slate-200 bg-white/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-600 shadow-sm backdrop-blur-sm;
+}
+
+.glass-badge-violet {
+  @apply border-violet-200 bg-violet-50 text-violet-700;
+}
+
+.glass-badge-emerald {
+  @apply border-emerald-200 bg-emerald-50 text-emerald-700;
+}
+
+.glass-input {
+  @apply w-full rounded-xl border border-slate-200 bg-white/90 px-4 py-3 text-sm text-slate-800 shadow-sm placeholder:text-slate-400 focus:border-violet-300 focus:outline-none focus:ring-2 focus:ring-violet-100 disabled:opacity-60;
+}
+
+.glass-input-error {
+  @apply border-red-300 focus:border-red-400 focus:ring-red-100;
+}
+
+.glass-logo-surface {
+  @apply flex items-center justify-center rounded-2xl border border-violet-100 bg-white p-6 shadow-inner shadow-violet-100/50;
+}
+
+.glass-logo-surface-emerald {
+  @apply flex items-center justify-center rounded-2xl border border-emerald-100 bg-gradient-to-br from-emerald-50 to-cyan-50 p-6 shadow-inner shadow-emerald-100/40;
+}
+
+.glass-stat-bar {
+  @apply border-y border-slate-200/80 bg-white/50 backdrop-blur-xl;
+}
+
+.glass-cta {
+  @apply relative overflow-hidden rounded-3xl border border-violet-200/80 bg-gradient-to-br from-violet-50 via-white to-blue-50 p-10 shadow-xl shadow-violet-100/80 backdrop-blur-xl md:p-16;
+}
+
+.glass-cta::before {
+  content: "";
+  @apply pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-violet-200/30 blur-3xl;
+  animation: orb-drift 14s ease-in-out infinite;
+}
+
+.glass-cta::after {
+  content: "";
+  @apply pointer-events-none absolute -bottom-16 -left-16 h-56 w-56 rounded-full bg-blue-200/25 blur-3xl;
+  animation: orb-drift 18s ease-in-out infinite reverse;
 }
 
 .gradient-text {
-  @apply bg-gradient-to-r from-cyan-300 via-teal-400 to-sky-500 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-slate-800 via-cyan-700 to-cyan-500 bg-clip-text text-transparent;
 }
 
-/* Nexus Retail — matches POS logo gradient */
 .nexus-gradient-text {
-  @apply bg-gradient-to-r from-[#C4B5FD] via-[#8B5CF6] to-[#2563EB] bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-violet-600 via-[#7C3AED] to-blue-600 bg-clip-text text-transparent;
 }
 
 .nexus-gradient-bg {
-  @apply bg-gradient-to-r from-[#A78BFA] via-[#7C3AED] to-[#2563EB];
+  @apply bg-gradient-to-r from-[#8B5CF6] via-[#6366F1] to-[#2563EB];
 }
 
 .nexus-gradient-bg-br {
-  @apply bg-gradient-to-br from-[#A78BFA] via-[#7C3AED] to-[#2563EB];
-}
-
-.nexus-border-gradient {
-  border: 1px solid transparent;
-  background:
-    linear-gradient(white, white) padding-box,
-    linear-gradient(90deg, #c4b5fd, #8b5cf6, #2563eb) border-box;
+  @apply bg-gradient-to-br from-violet-500 via-indigo-500 to-blue-600;
 }
 
 .nexus-glow {
   box-shadow:
-    0 4px 24px -4px rgba(139, 92, 246, 0.35),
-    0 8px 32px -8px rgba(37, 99, 235, 0.2);
+    0 12px 40px -12px rgba(139, 92, 246, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
-.nexus-card-accent {
-  @apply border-violet-200/80 shadow-lg shadow-violet-500/10;
+.lms-gradient-text {
+  @apply bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-600 bg-clip-text text-transparent;
 }
 
-.hero-pattern {
-  background-image:
-    radial-gradient(circle at 20% 50%, rgba(34, 211, 238, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 75% 25%, rgba(139, 92, 246, 0.14) 0%, transparent 45%),
-    radial-gradient(circle at 60% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 45%);
-}
-
-.hero-pattern-nexus {
-  background-image:
-    radial-gradient(circle at 30% 40%, rgba(167, 139, 250, 0.2) 0%, transparent 50%),
-    radial-gradient(circle at 70% 60%, rgba(37, 99, 235, 0.18) 0%, transparent 45%);
-}
-
-.glass-panel {
-  @apply bg-white/5 backdrop-blur-xl;
-}
-
-.glass-panel-nexus {
-  @apply border-violet-400/20 bg-gradient-to-br from-violet-500/10 via-transparent to-blue-600/10 backdrop-blur-xl;
-}
-
-.card-hover {
-  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-500/10;
-}
-
-.card-hover-nexus {
-  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-500/15;
+.lms-glow {
+  box-shadow:
+    0 12px 40px -12px rgba(16, 185, 129, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .section-padding {
-  @apply py-16 md:py-24;
+  @apply relative py-16 md:py-24;
 }
 
 .container-custom {
-  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  @apply relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
 }
 
-.product-logo-wrap {
-  @apply flex min-h-[88px] items-center justify-center rounded-2xl px-6 py-4;
+.card-hover {
+  @apply transition-all duration-500;
+  transition-timing-function: var(--ease-out-expo);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+}
+
+.card-hover-nexus:hover {
+  box-shadow: 0 24px 56px -16px rgba(139, 92, 246, 0.22);
+}
+
+.card-hover-lms:hover {
+  box-shadow: 0 24px 56px -16px rgba(16, 185, 129, 0.18);
+}
+
+.process-timeline {
+  @apply relative;
+}
+
+.process-timeline::before {
+  content: "";
+  @apply absolute left-0 right-0 top-8 hidden h-0.5 lg:block;
+  background: linear-gradient(to right, transparent, rgba(139, 92, 246, 0.25) 10%, rgba(37, 99, 235, 0.25) 90%, transparent);
+}
+
+.process-step {
+  @apply relative;
+}
+
+.process-step-dot {
+  @apply mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border border-violet-200 bg-white text-xl font-extrabold shadow-lg shadow-violet-100/80 transition-transform duration-500;
+  transition-timing-function: var(--ease-out-expo);
+}
+
+.process-step:hover .process-step-dot {
+  @apply scale-110 text-white shadow-violet-200/80;
+  background: linear-gradient(to right, #8b5cf6, #6366f1, #2563eb);
+  -webkit-text-fill-color: white;
+  background-clip: border-box;
+}
+
+.faq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s var(--ease-out-expo);
+}
+
+.faq-panel-open {
+  grid-template-rows: 1fr;
+}
+
+.faq-panel-inner {
+  overflow: hidden;
 }
 
 .product-logo-wrap-nexus {
-  @apply flex min-h-[88px] items-center justify-center rounded-2xl border border-violet-200/60 bg-white px-6 py-4 shadow-inner shadow-violet-200/30;
+  @apply flex min-h-[88px] items-center justify-center rounded-2xl border border-violet-100 bg-white p-6 shadow-inner shadow-violet-100/50;
 }
+
+.product-logo-wrap-lms {
+  @apply flex min-h-[88px] items-center justify-center rounded-2xl border border-emerald-100 bg-gradient-to-br from-emerald-50 to-cyan-50 p-6 shadow-inner shadow-emerald-100/40;
+}
+
+select.glass-input option {
+  background-color: #ffffff;
+  color: #1e293b;
+}
+

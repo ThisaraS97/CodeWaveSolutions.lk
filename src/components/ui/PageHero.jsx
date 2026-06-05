@@ -1,21 +1,40 @@
-export default function PageHero({ badge, title, subtitle, image }) {
+import Reveal from './Reveal'
+
+export default function PageHero({ badge, title, subtitle, image, badgeVariant = 'default' }) {
+  const badgeClass =
+    badgeVariant === 'violet'
+      ? 'glass-badge glass-badge-violet'
+      : badgeVariant === 'emerald'
+        ? 'glass-badge glass-badge-emerald'
+        : 'glass-badge'
+
   return (
-    <section className="relative bg-navy-900 hero-pattern overflow-hidden">
-      <div className="container-custom relative py-16 md:py-24">
-        <div className={`grid ${image ? 'lg:grid-cols-2 gap-12 items-center' : ''}`}>
+    <section className="section-padding pb-12 pt-8 md:pb-16">
+      <div className="container-custom">
+        <div className={`grid ${image ? 'items-center gap-12 lg:grid-cols-2' : ''}`}>
           <div className={image ? '' : 'max-w-3xl'}>
             {badge && (
-              <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-brand-300 text-xs font-semibold uppercase tracking-wider mb-4">
-                {badge}
-              </span>
+              <Reveal>
+                <span className={`${badgeClass} mb-4 inline-block`}>{badge}</span>
+              </Reveal>
             )}
-            <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-4">{title}</h1>
-            {subtitle && <p className="text-lg text-slate-300 leading-relaxed">{subtitle}</p>}
+            <Reveal delay={80}>
+              <h1 className="mb-4 text-4xl font-extrabold leading-tight tracking-tight text-slate-900 md:text-5xl">
+                {title}
+              </h1>
+            </Reveal>
+            {subtitle && (
+              <Reveal delay={160}>
+                <p className="text-lg leading-relaxed text-slate-600">{subtitle}</p>
+              </Reveal>
+            )}
           </div>
           {image && (
-            <div className="hidden lg:block rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-              <img src={image} alt="" className="w-full h-72 object-cover" />
-            </div>
+            <Reveal direction="right" delay={120}>
+              <div className="glass-strong hidden overflow-hidden rounded-3xl lg:block">
+                <img src={image} alt="" className="h-72 w-full object-cover transition-transform duration-700 hover:scale-105" />
+              </div>
+            </Reveal>
           )}
         </div>
       </div>

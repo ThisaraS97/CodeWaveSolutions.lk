@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import SectionHeading from '../ui/SectionHeading'
+import Reveal from '../ui/Reveal'
 import { faqs } from '../../data/content'
 
 export default function FAQ() {
@@ -15,32 +16,36 @@ export default function FAQ() {
           subtitle="Common questions about our Odoo ERP and LMS services."
         />
 
-        <div className="max-w-3xl mx-auto space-y-3">
-          {faqs.map((faq, index) => (
-            <div
-              key={faq.question}
-              className="border border-slate-200 rounded-xl overflow-hidden bg-white"
-            >
-              <button
-                type="button"
-                className="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-slate-50 transition-colors"
-                onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
-                aria-expanded={openIndex === index}
-              >
-                <span className="font-semibold text-navy-900">{faq.question}</span>
-                <ChevronDown
-                  className={`w-5 h-5 text-brand-500 shrink-0 transition-transform ${
-                    openIndex === index ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-              {openIndex === index && (
-                <div className="px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
-                  {faq.answer}
+        <div className="mx-auto max-w-3xl space-y-3">
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index
+            return (
+              <Reveal key={faq.question} delay={index * 60}>
+                <div className={`glass overflow-hidden rounded-2xl transition-shadow duration-300 ${isOpen ? 'shadow-lg shadow-violet-100/60' : ''}`}>
+                  <button
+                    type="button"
+                    className="flex w-full items-center justify-between gap-4 p-5 text-left transition-colors hover:bg-slate-50/80"
+                    onClick={() => setOpenIndex(isOpen ? -1 : index)}
+                    aria-expanded={isOpen}
+                  >
+                    <span className="font-semibold text-slate-900">{faq.question}</span>
+                    <ChevronDown
+                      className={`h-5 w-5 shrink-0 text-violet-500 transition-transform duration-300 ${
+                        isOpen ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+                  <div className={`faq-panel ${isOpen ? 'faq-panel-open' : ''}`}>
+                    <div className="faq-panel-inner">
+                      <div className="border-t border-slate-200 px-5 pb-5 pt-4 text-sm leading-relaxed text-slate-600">
+                        {faq.answer}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              )}
-            </div>
-          ))}
+              </Reveal>
+            )
+          })}
         </div>
       </div>
     </section>

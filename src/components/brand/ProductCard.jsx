@@ -2,43 +2,41 @@ import { Link } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
 import EIskoleLogo from './EIskoleLogo'
 
-export default function ProductCard({ product, featured = false }) {
+export default function ProductCard({ product }) {
   const isNexus = product.id === 'nexus-retail'
   const isLms = product.id === 'e-iskole'
 
   return (
     <article
-      className={`group relative overflow-hidden rounded-3xl border bg-white transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl ${
-        isNexus
-          ? 'nexus-card-accent hover:shadow-violet-500/20'
-          : 'border-emerald-200/80 shadow-lg shadow-emerald-500/5 hover:shadow-emerald-500/15'
-      } ${featured ? 'lg:col-span-1' : ''}`}
+      className={`glass-card group relative overflow-hidden card-hover ${isNexus ? 'card-hover-nexus' : 'card-hover-lms'}`}
     >
       <div
-        className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${product.accentGradient}`}
+        className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${product.accentGradient}`}
         aria-hidden="true"
       />
 
       <div className="p-8 pb-6">
         <div className="mb-6 flex items-start justify-between gap-4">
-          <div className={`flex min-h-[88px] flex-1 items-center justify-center rounded-2xl px-5 py-4 ${product.logoBg}`}>
+          <div
+            className={`flex min-h-[88px] flex-1 items-center justify-center rounded-2xl px-5 py-4 ${
+              isNexus ? 'product-logo-wrap-nexus' : 'product-logo-wrap-lms'
+            }`}
+          >
             {isLms ? (
               <EIskoleLogo size="md" />
             ) : (
               <img src={product.logo} alt={`${product.name} logo`} className="max-h-16 w-auto object-contain" />
             )}
           </div>
-          <span
-            className={`shrink-0 rounded-full px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.18em] ${product.badgeClass}`}
-          >
+          <span className={`glass-badge shrink-0 text-[0.65rem] ${isNexus ? 'glass-badge-violet' : 'glass-badge-emerald'}`}>
             {product.badge}
           </span>
         </div>
 
-        <p className={`mb-2 text-xs font-semibold uppercase tracking-[0.2em] ${isNexus ? 'nexus-gradient-text' : product.labelClass}`}>
+        <p className={`mb-2 text-xs font-semibold uppercase tracking-[0.2em] ${product.labelClass}`}>
           {product.category}
         </p>
-        <h3 className={`mb-3 text-2xl font-bold tracking-tight ${isNexus ? 'nexus-gradient-text' : 'text-slate-900'}`}>
+        <h3 className={`mb-3 text-2xl font-bold tracking-tight ${isNexus ? 'nexus-gradient-text' : 'lms-gradient-text'}`}>
           {product.name}
         </h3>
         <p className="mb-6 text-sm leading-relaxed text-slate-600">{product.description}</p>
@@ -46,7 +44,7 @@ export default function ProductCard({ product, featured = false }) {
         <ul className="mb-8 grid gap-2">
           {product.highlights.map((item) => (
             <li key={item} className="flex items-center gap-2 text-sm text-slate-600">
-              <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${isNexus ? 'nexus-gradient-bg' : product.dotClass}`} />
+              <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${product.dotClass}`} />
               {item}
             </li>
           ))}
@@ -61,7 +59,7 @@ export default function ProductCard({ product, featured = false }) {
         </Link>
       </div>
 
-      <div className="relative h-44 overflow-hidden border-t border-slate-100">
+      <div className="relative h-44 overflow-hidden border-t border-slate-200/80">
         <img
           src={product.image}
           alt={`${product.name} preview`}

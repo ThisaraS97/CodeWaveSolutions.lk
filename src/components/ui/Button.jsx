@@ -2,12 +2,14 @@ import { Link } from 'react-router-dom'
 
 const variants = {
   primary:
-    'bg-brand-500 text-white hover:bg-brand-600 shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40',
+    'btn-shine border border-cyan-200 bg-gradient-to-r from-slate-800 via-cyan-700 to-cyan-500 text-white shadow-lg shadow-cyan-200/70 hover:shadow-cyan-300/80 hover:scale-[1.02] active:scale-[0.98]',
   secondary:
-    'bg-white text-brand-700 border border-brand-200 hover:bg-brand-50 hover:border-brand-300',
-  outline:
-    'border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm',
-  dark: 'bg-navy-900 text-white hover:bg-navy-800',
+    'border border-slate-200 bg-white text-slate-800 shadow-sm hover:border-slate-300 hover:bg-slate-50 hover:scale-[1.02] active:scale-[0.98]',
+    outline:
+    'border-2 border-slate-300 bg-white/80 text-slate-700 hover:border-cyan-300 hover:bg-cyan-50/50 hover:scale-[1.02] active:scale-[0.98]',
+  glass:
+    'border border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 hover:scale-[1.02] active:scale-[0.98]',
+  dark: 'border border-slate-800 bg-slate-900 text-white hover:bg-slate-800',
 }
 
 const sizes = {
@@ -25,7 +27,7 @@ export default function Button({
   className = '',
   ...props
 }) {
-  const classes = `inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-200 ${variants[variant]} ${sizes[size]} ${className}`
+  const classes = `inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-300 ${variants[variant] || variants.primary} ${sizes[size]} ${className}`
 
   if (to) {
     return (

@@ -41,7 +41,7 @@ export const products = {
     labelClass: 'bg-gradient-to-r from-violet-600 to-blue-600 bg-clip-text text-transparent',
     linkClass: 'text-violet-700 hover:text-blue-800',
     dotClass: 'bg-gradient-to-r from-violet-500 to-blue-600',
-    imageOverlay: 'from-violet-900/70 via-indigo-900/40 to-transparent',
+    imageOverlay: 'from-violet-100/80 via-white/20 to-transparent',
     highlights: [
       'Ultra-fast checkout UI',
       'Offline POS with auto-sync',
@@ -68,7 +68,7 @@ export const products = {
     labelClass: 'text-emerald-600',
     linkClass: 'text-emerald-700 hover:text-emerald-900',
     dotClass: 'bg-emerald-500',
-    imageOverlay: 'from-emerald-950/50 via-transparent to-transparent',
+    imageOverlay: 'from-emerald-100/70 via-white/20 to-transparent',
     highlights: [
       'School & tuition ready',
       'Online exams & grading',

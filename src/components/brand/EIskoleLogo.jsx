@@ -10,18 +10,18 @@ export default function EIskoleLogo({ size = 'md', showTagline = true, className
     <div className={`flex flex-col items-center text-center ${className}`}>
       <div className="flex items-baseline gap-0.5 leading-none">
         <span
-          className={`${s.main} font-extrabold tracking-tight bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-700 bg-clip-text text-transparent`}
+          className={`${s.main} font-extrabold tracking-tight bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-600 bg-clip-text text-transparent`}
         >
           E-
         </span>
         <span
-          className={`${s.sinhala} font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-700 bg-clip-text text-transparent`}
+          className={`${s.sinhala} font-bold bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-600 bg-clip-text text-transparent`}
         >
           ඉස්කෝලේ
         </span>
       </div>
       {showTagline && (
-        <span className={`${s.sub} mt-2 font-semibold uppercase tracking-[0.28em] text-slate-400`}>
+        <span className={`${s.sub} mt-2 font-semibold uppercase tracking-[0.28em] text-slate-500`}>
           Learning Management System
         </span>
       )}

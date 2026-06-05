@@ -1,4 +1,5 @@
 import Hero from '../components/home/Hero'
+import TrustMarquee from '../components/home/TrustMarquee'
 import StatsBar from '../components/home/StatsBar'
 import ProductsShowcase from '../components/home/ProductsShowcase'
 import ServicesOverview from '../components/home/ServicesOverview'
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <TrustMarquee />
       <StatsBar />
       <ProductsShowcase />
       <ServicesOverview />

@@ -97,7 +97,7 @@ export default function Contact() {
           <div className="grid gap-12 lg:grid-cols-5">
             <div className="space-y-6 lg:col-span-2">
               <div>
-                <h2 className="mb-4 text-2xl font-bold text-navy-900">Get in Touch</h2>
+                <h2 className="mb-4 text-2xl font-bold text-slate-900">Get in Touch</h2>
                 <p className="leading-relaxed text-slate-600">
                   Reach out via phone, email, or WhatsApp. We typically respond within 24 hours on
                   business days.
@@ -107,27 +107,27 @@ export default function Contact() {
               <div className="space-y-4">
                 <a
                   href={`tel:${company.phone.replace(/\s/g, '')}`}
-                  className="group flex items-center gap-4 rounded-xl border border-slate-100 bg-slate-50 p-4 transition-colors hover:border-brand-200 hover:bg-brand-50"
+                  className="glass group flex items-center gap-4 p-4 transition-all hover:border-violet-200"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10 transition-colors group-hover:bg-brand-500">
-                    <Phone className="h-5 w-5 text-brand-600 group-hover:text-white" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-violet-200 bg-violet-50 transition-colors group-hover:bg-violet-100">
+                    <Phone className="h-5 w-5 text-violet-600" />
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-wider text-slate-500">Phone</p>
-                    <p className="font-semibold text-navy-900">{company.phone}</p>
+                    <p className="font-semibold text-slate-900">{company.phone}</p>
                   </div>
                 </a>
 
                 <a
                   href={`mailto:${company.email}`}
-                  className="group flex items-center gap-4 rounded-xl border border-slate-100 bg-slate-50 p-4 transition-colors hover:border-brand-200 hover:bg-brand-50"
+                  className="glass group flex items-center gap-4 p-4 transition-all hover:border-violet-200"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10 transition-colors group-hover:bg-brand-500">
-                    <Mail className="h-5 w-5 text-brand-600 group-hover:text-white" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-violet-200 bg-violet-50 transition-colors group-hover:bg-violet-100">
+                    <Mail className="h-5 w-5 text-violet-600" />
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-wider text-slate-500">Email</p>
-                    <p className="font-semibold text-navy-900">{company.email}</p>
+                    <p className="font-semibold text-slate-900">{company.email}</p>
                   </div>
                 </a>
 
@@ -135,24 +135,24 @@ export default function Contact() {
                   href={`https://wa.me/${company.whatsapp}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-4 rounded-xl border border-slate-100 bg-slate-50 p-4 transition-colors hover:border-brand-200 hover:bg-brand-50"
+                  className="glass group flex items-center gap-4 p-4 transition-all hover:border-emerald-200"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10 transition-colors group-hover:bg-brand-500">
-                    <MessageCircle className="h-5 w-5 text-brand-600 group-hover:text-white" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-emerald-200 bg-emerald-50 transition-colors group-hover:bg-emerald-100">
+                    <MessageCircle className="h-5 w-5 text-emerald-600" />
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-wider text-slate-500">WhatsApp</p>
-                    <p className="font-semibold text-navy-900">Chat with us instantly</p>
+                    <p className="font-semibold text-slate-900">Chat with us instantly</p>
                   </div>
                 </a>
 
-                <div className="flex items-center gap-4 rounded-xl border border-slate-100 bg-slate-50 p-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10">
-                    <MapPin className="h-5 w-5 text-brand-600" />
+                <div className="glass flex items-center gap-4 p-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 bg-slate-50">
+                    <MapPin className="h-5 w-5 text-slate-600" />
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-wider text-slate-500">Location</p>
-                    <p className="font-semibold text-navy-900">{company.address}</p>
+                    <p className="font-semibold text-slate-900">{company.address}</p>
                   </div>
                 </div>
               </div>
@@ -160,9 +160,9 @@ export default function Contact() {
 
             <div className="lg:col-span-3">
               {submitted ? (
-                <div className="rounded-2xl border border-brand-200 bg-brand-50 p-10 text-center">
-                  <CheckCircle2 className="mx-auto mb-4 h-16 w-16 text-brand-500" />
-                  <h3 className="mb-2 text-2xl font-bold text-navy-900">Message Sent!</h3>
+                <div className="glass-strong p-10 text-center">
+                  <CheckCircle2 className="mx-auto mb-4 h-16 w-16 text-emerald-500" />
+                  <h3 className="mb-2 text-2xl font-bold text-slate-900">Message Sent!</h3>
                   <p className="mb-6 text-slate-600">
                     Thank you for reaching out. We&apos;ll get back to you within 24 hours.
                   </p>
@@ -173,7 +173,7 @@ export default function Contact() {
                       setForm(emptyForm)
                       setSubmitError('')
                     }}
-                    className="font-semibold text-brand-600 hover:text-brand-700"
+                    className="font-semibold text-violet-700 hover:text-violet-900"
                   >
                     Send another message
                   </button>
@@ -185,7 +185,7 @@ export default function Contact() {
                   data-netlify="true"
                   data-netlify-honeypot="bot-field"
                   onSubmit={handleSubmit}
-                  className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm"
+                  className="glass-strong p-8"
                 >
                   <input type="hidden" name="form-name" value={FORM_NAME} />
 
@@ -197,7 +197,7 @@ export default function Contact() {
                     </label>
                   </p>
 
-                  <h3 className="mb-6 text-xl font-bold text-navy-900">Send Us a Message</h3>
+                  <h3 className="mb-6 text-xl font-bold text-slate-900">Send Us a Message</h3>
 
                   {submitError && (
                     <p className="mb-5 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
@@ -217,9 +217,7 @@ export default function Contact() {
                         value={form.name}
                         onChange={handleChange}
                         disabled={submitting}
-                        className={`w-full rounded-xl border px-4 py-3 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 disabled:opacity-60 ${
-                          errors.name ? 'border-red-300' : 'border-slate-200'
-                        }`}
+                        className={`glass-input ${errors.name ? 'glass-input-error' : ''}`}
                         placeholder="Your name"
                       />
                       {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
@@ -235,9 +233,7 @@ export default function Contact() {
                         value={form.email}
                         onChange={handleChange}
                         disabled={submitting}
-                        className={`w-full rounded-xl border px-4 py-3 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 disabled:opacity-60 ${
-                          errors.email ? 'border-red-300' : 'border-slate-200'
-                        }`}
+                        className={`glass-input ${errors.email ? 'glass-input-error' : ''}`}
                         placeholder="you@example.com"
                       />
                       {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
@@ -256,9 +252,7 @@ export default function Contact() {
                         value={form.phone}
                         onChange={handleChange}
                         disabled={submitting}
-                        className={`w-full rounded-xl border px-4 py-3 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 disabled:opacity-60 ${
-                          errors.phone ? 'border-red-300' : 'border-slate-200'
-                        }`}
+                        className={`glass-input ${errors.phone ? 'glass-input-error' : ''}`}
                         placeholder="+94 77 123 4567"
                       />
                       {errors.phone && <p className="mt-1 text-xs text-red-500">{errors.phone}</p>}
@@ -274,7 +268,7 @@ export default function Contact() {
                         value={form.company}
                         onChange={handleChange}
                         disabled={submitting}
-                        className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 disabled:opacity-60"
+                        className="glass-input"
                         placeholder="Your business name"
                       />
                     </div>
@@ -290,9 +284,7 @@ export default function Contact() {
                       value={form.service}
                       onChange={handleChange}
                       disabled={submitting}
-                      className={`w-full rounded-xl border bg-white px-4 py-3 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 disabled:opacity-60 ${
-                        errors.service ? 'border-red-300' : 'border-slate-200'
-                      }`}
+                      className={`glass-input ${errors.service ? 'glass-input-error' : ''}`}
                     >
                       <option value="">Select a service</option>
                       {serviceOptions.map((opt) => (
@@ -315,9 +307,7 @@ export default function Contact() {
                       onChange={handleChange}
                       disabled={submitting}
                       rows={5}
-                      className={`w-full resize-none rounded-xl border px-4 py-3 text-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 disabled:opacity-60 ${
-                        errors.message ? 'border-red-300' : 'border-slate-200'
-                      }`}
+                      className={`glass-input resize-none ${errors.message ? 'glass-input-error' : ''}`}
                       placeholder="Tell us about your business and what you need..."
                     />
                     {errors.message && <p className="mt-1 text-xs text-red-500">{errors.message}</p>}
@@ -326,7 +316,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-500 px-8 py-4 font-semibold text-white shadow-lg shadow-brand-500/25 transition-all hover:bg-brand-600 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-violet-200 bg-gradient-to-r from-violet-600 via-indigo-600 to-blue-600 px-8 py-4 font-semibold text-white shadow-lg shadow-violet-200/80 transition-all hover:shadow-violet-300/80 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
                   >
                     {submitting ? (
                       <>

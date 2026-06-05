@@ -18,34 +18,29 @@ export default function Services() {
 
       <section className="section-padding">
         <div className="container-custom">
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid gap-8 lg:grid-cols-3">
             {services.map((service, index) => (
-              <article
-                key={service.id}
-                className="bg-white rounded-2xl border border-slate-100 overflow-hidden card-hover"
-              >
+              <article key={service.id} className="glass-card group overflow-hidden card-hover">
                 <img
                   src={service.image}
                   alt={`${service.title} - placeholder`}
-                  className="w-full h-52 object-cover"
+                  className="h-52 w-full object-cover opacity-75 transition-transform group-hover:scale-105"
                 />
                 <div className="p-8">
-                  <span className="text-xs font-bold text-brand-600 uppercase tracking-wider">
-                    Service {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <h2 className="text-2xl font-bold text-navy-900 mt-2 mb-3">{service.title}</h2>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-6">{service.description}</p>
-                  <ul className="space-y-2 mb-6">
+                  <span className="glass-badge text-[0.65rem]">Service {String(index + 1).padStart(2, '0')}</span>
+                  <h2 className="mb-3 mt-3 text-2xl font-bold text-slate-900">{service.title}</h2>
+                  <p className="mb-6 text-sm leading-relaxed text-slate-600">{service.description}</p>
+                  <ul className="mb-6 space-y-2">
                     {service.features.map((feature) => (
                       <li key={feature} className="flex items-center gap-2 text-sm text-slate-600">
-                        <CheckCircle2 className="w-4 h-4 text-brand-500 shrink-0" />
+                        <CheckCircle2 className="h-4 w-4 shrink-0 text-violet-500" />
                         {feature}
                       </li>
                     ))}
                   </ul>
                   <Button to={service.path} variant="primary" size="sm">
                     View Details
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="h-4 w-4" />
                   </Button>
                 </div>
               </article>
@@ -54,23 +49,24 @@ export default function Services() {
         </div>
       </section>
 
-      <section className="section-padding bg-gradient-to-b from-violet-50/60 to-blue-50/40">
+      <section className="section-padding">
         <div className="container-custom">
           <SectionHeading
             badge="Nexus Retail UI"
             title="Interfaces Built for Speed"
             subtitle="Nexus Retail delivers a purpose-built POS experience — not generic ERP screens — so your team completes daily tasks in fewer clicks."
+            badgeVariant="violet"
           />
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="overflow-hidden rounded-2xl border border-violet-200/60 shadow-lg nexus-glow">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div className="glass-strong nexus-glow overflow-hidden rounded-3xl">
               <img
                 src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=500&fit=crop"
                 alt="Custom UI dashboard - placeholder"
-                className="w-full h-auto object-cover"
+                className="h-auto w-full object-cover opacity-90"
               />
             </div>
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid gap-4 sm:grid-cols-2">
               <IconBox theme="nexus" icon="Smartphone" title="Mobile-First" description="Works perfectly on tablets and phones for on-the-go management." />
               <IconBox theme="nexus" icon="MousePointerClick" title="One-Click Actions" description="Common tasks like sales, returns, and stock checks in a single tap." />
               <IconBox theme="nexus" icon="LayoutDashboard" title="Role Dashboards" description="Cashiers, managers, and owners see only what they need." />
@@ -87,28 +83,30 @@ export default function Services() {
             title="From Idea to Launch"
             subtitle="Our structured approach ensures your project stays on track and on budget."
           />
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {processSteps.map((step) => (
-              <div key={step.step} className="p-6 rounded-2xl bg-brand-50 border border-brand-100">
-                <span className="text-3xl font-extrabold text-brand-600">{step.step}</span>
-                <h3 className="text-lg font-bold text-navy-900 mt-3 mb-2">{step.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{step.description}</p>
+              <div key={step.step} className="glass-strong p-6 card-hover">
+                <span className="gradient-text text-3xl font-extrabold">{step.step}</span>
+                <h3 className="mb-2 mt-3 text-lg font-bold text-slate-900">{step.title}</h3>
+                <p className="text-sm leading-relaxed text-slate-600">{step.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section-padding bg-navy-900">
+      <section className="section-padding">
         <div className="container-custom text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Not Sure Which Service You Need?</h2>
-          <p className="text-slate-400 mb-8 max-w-xl mx-auto">
-            Tell us about your business and we&apos;ll recommend the right solution — no obligation.
-          </p>
-          <Button to="/contact" size="lg">
-            Talk to an Expert
-            <ArrowRight className="w-5 h-5" />
-          </Button>
+          <div className="glass-cta mx-auto max-w-3xl">
+            <h2 className="mb-4 text-3xl font-bold text-slate-900">Not Sure Which Service You Need?</h2>
+            <p className="mx-auto mb-8 max-w-xl text-slate-600">
+              Tell us about your business and we&apos;ll recommend the right solution — no obligation.
+            </p>
+            <Button to="/contact" size="lg">
+              Talk to an Expert
+              <ArrowRight className="h-5 w-5" />
+            </Button>
+          </div>
         </div>
       </section>
 
