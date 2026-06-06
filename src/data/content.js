@@ -6,6 +6,8 @@ export const company = {
   phone: '+94 77 123 4567',
   whatsapp: '+94771234567',
   address: 'Colombo, Sri Lanka',
+  facebook: 'https://www.facebook.com/share/14gdQ51X1BX/?mibextid=wwXIfr',
+  linkedin: 'https://www.linkedin.com/company/103806581',
   description:
     'We deliver fully customized Odoo ERP, Nexus Retail POS, and E- ඉස්කෝලේ LMS — built for retail shops, schools, tuition centres, and organizations across Sri Lanka.',
 }

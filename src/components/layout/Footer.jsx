@@ -17,8 +17,8 @@ export default function Footer() {
             <p className="mb-6 text-sm leading-relaxed text-slate-500">{company.description}</p>
             <div className="flex gap-3">
               {[
-                { Icon: Facebook, label: 'Facebook', href: '#' },
-                { Icon: Linkedin, label: 'LinkedIn', href: '#' },
+                { Icon: Facebook, label: 'Facebook', href: company.facebook, external: true },
+                { Icon: Linkedin, label: 'LinkedIn', href: company.linkedin, external: true },
                 { Icon: MessageCircle, label: 'WhatsApp', href: `https://wa.me/${company.whatsapp}`, external: true },
               ].map(({ Icon, label, href, external }) => (
                 <a
